@@ -10,7 +10,7 @@ namespace MyPhotoshop
         double check(double value_)
         {
             if (value_ < 0 || value_ > 1)
-                throw new Exception(string.Format("Wrong channel value {0} (the value must be between 0 and 1", value_));
+                throw new Exception(string.Format("The value must be between 0 and 1", value_));
             return value_;
         }
 
@@ -24,14 +24,14 @@ namespace MyPhotoshop
         double g;
         public double G
         {
-            get { return r; }
+            get { return g; }
             set { g = check(value); }
         }
 
         double b;
         public double B
         {
-            get { return r; }
+            get { return b; }
             set { b = check(value); }
         }
     }
