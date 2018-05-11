@@ -8,7 +8,7 @@ namespace MyPhotoshop
 
 		public readonly int height;
         
-		Pixel[,] data;
+		private readonly Pixel[,] data;
         public Pixel this[int width_index, int height_index] 
         { 
             get { return data[width_index, height_index]; }            
