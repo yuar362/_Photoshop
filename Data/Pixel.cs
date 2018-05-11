@@ -7,6 +7,14 @@ namespace MyPhotoshop
 {
     public struct Pixel
     {
+        public Pixel(double r_, double g_, double b_)
+        {
+            r = g = b = 0;  //К свойствам нельзя обращаться пока не заполнены все поля. костыль чтобы работало.
+            R = r_;
+            G = g_;
+            B = b_;
+        }
+
         double check(double value_)
         {
             if (value_ < 0 || value_ > 1)
