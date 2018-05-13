@@ -49,5 +49,15 @@ namespace MyPhotoshop
             get { return b; }
             set { b = check(value); }
         }
+
+        static public Pixel operator *(Pixel pixel_, double number_)
+        {
+            return new Pixel(Pixel.trim(pixel_.R * number_), Pixel.trim(pixel_.G * number_), Pixel.trim(pixel_.B * number_));
+        }
+
+        static public Pixel operator *(double number_, Pixel pixel_)
+        {
+            return pixel_*number_;
+        }
     }
 }
