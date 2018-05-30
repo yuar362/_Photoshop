@@ -5,9 +5,9 @@ using System.Text;
 
 namespace MyPhotoshop
 {
-    public class GrayScaleFilter : IFilter
+    public class GrayScaleFilter : PixelFilter
     {
-        public ParameterInfo[] GetParameters()
+        public override ParameterInfo[] GetParameters()
         {
             return new ParameterInfo[0];
         }
@@ -17,19 +17,11 @@ namespace MyPhotoshop
             return "Оттенки серого";
         }
 
-        public Photo Process(Photo original, double[] parameters)
+        public override Pixel ProcessPixel(Pixel original, double[] parameters)
         {
-            var result = new Photo(original.width, original.height);
-
-            for (int x = 0; x < result.width; x++)
-                for (int y = 0; y < result.height; y++)
-                {
-                    var lightness = original[x, y].R + original[x, y].G + original[x, y].B;
-                    lightness *= 0.3333;
-                    result[x, y] = new Pixel(lightness, lightness, lightness);
-                }
-            return result;
+            var lightness = original.R + original.G + original.B;
+            lightness *= 0.3333;
+            return new Pixel(lightness, lightness, lightness);
         }
-		
     }
 }
