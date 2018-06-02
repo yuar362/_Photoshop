@@ -5,22 +5,22 @@ using System.Text;
 
 namespace MyPhotoshop
 {
-    public abstract class PixelFilter : IFilter
+    public abstract class PixelFilter : ParametrizedFilter
     {
-        public abstract Pixel ProcessPixel(Pixel original, double[] parameters);
+        public PixelFilter(IParameters parameters_) : base(parameters_) { }
 
-        public Photo Process(Photo original, double[] parameters)
+        public abstract Pixel ProcessPixel(Pixel original, IParameters parameters_);
+
+        public override Photo Process(Photo original, IParameters parameters_)
         {
             var result = new Photo(original.width, original.height);
 
             for (int x = 0; x < result.width; x++)
                 for (int y = 0; y < result.height; y++)
                 {
-                    result[x, y] = ProcessPixel(original[x, y], parameters);
+                    result[x, y] = ProcessPixel(original[x, y], parameters_);
                 }
             return result;
         }
-
-        public abstract ParameterInfo[] GetParameters();
     }
 }
