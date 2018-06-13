@@ -5,16 +5,14 @@ using System.Text;
 
 namespace MyPhotoshop
 {
-    public class GrayScaleFilter : PixelFilter
+    public class GrayScaleFilter : PixelFilter<EmptyParameters>
     {
-        public GrayScaleFilter() : base(new EmptyParameters()) { }
-
         public override string ToString()
         {
             return "Оттенки серого";
         }
 
-        public override Pixel ProcessPixel(Pixel original, IParameters parameters_)
+        public override Pixel ProcessPixel(Pixel original, EmptyParameters parameters_)
         {
             var lightness = original.R + original.G + original.B;
             lightness *= 0.3333;
